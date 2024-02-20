@@ -1,19 +1,17 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Wrapper } from "../Wrapper";
-import Link from "next/link";
-import { ArrowRightIcon } from "lucide-react";
+
 import { useState } from "react";
 import { SliderImages } from "@/lib/constants";
+import CustomButton from "../Button";
 
 type Props = {};
 
 const Hero = (props: Props) => {
   const [activeIndx, setActiveIndx] = useState(0);
 
- 
   return (
     <section className=" h-[calc(100svh-10vh)] w-full pt-16  ">
       <div className="bg-secondary absolute top-0 left-0 w-[70vw] z-0 h-[100vh]"></div>
@@ -31,20 +29,7 @@ const Hero = (props: Props) => {
               We are tending to thousands of details it takes to create a custom
               home tailored to your lifestyle{" "}
             </p>
-            <Button
-              asChild
-              variant="default"
-              size="lg"
-              className="bg-accent rounded font-semibold pl-4 py-1 pr-1 hover:bg-accent/80 transition-all duration-150 ease-in-out"
-            >
-              <Link href="/explore" className="space-x-2 group">
-                <span>Explore More</span>
-
-                <span className="bg-background text-primary h-full w-8 flex items-center justify-center group-hover:bg-background/80 ">
-                  <ArrowRightIcon className="h-4 group-hover:translate-x-2 transition-all duration-150 ease-in-out" />
-                </span>
-              </Link>
-            </Button>
+            <CustomButton text="Explore More" href="/gallery" />
           </div>
 
           <div className="flex flex-row gap-x-2 items-end ">
@@ -56,7 +41,7 @@ const Hero = (props: Props) => {
                   height={index === activeIndx ? 200 : 100}
                   width={index === activeIndx ? 200 : 100}
                   alt="NextUI hero Image with delay"
-                  className="rounded aspect-video object-cover"
+                  className="rounded aspect-video object-cover cursor-pointer"
                   src={item.src}
                 />
               );
@@ -65,11 +50,7 @@ const Hero = (props: Props) => {
         </div>
 
         {SliderImages.map((item, index) => {
-          
           if (index === activeIndx) {
-            const customClass =
-              "absolute -top-[2rem] right-[4rem] z-[5] w-40  h-40 " + item.bgColor
-            console.log(customClass);
             return (
               <div key={item.id} className="relative flex-1">
                 <Image
@@ -81,13 +62,13 @@ const Hero = (props: Props) => {
                   src={item.src}
                 />
                 <div
-                  className='absolute -top-[2rem] right-[4rem] z-[5] w-40  h-40 h-100vh ' 
+                  className="absolute -top-[2rem] right-[4rem] z-[5] w-40  h-40 h-100vh "
                   style={{ backgroundColor: `${item.bgColor}` }}
                 ></div>
               </div>
             );
-          };
-          return null
+          }
+          return null;
         })}
       </Wrapper>
     </section>
