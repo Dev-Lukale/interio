@@ -13,12 +13,13 @@ const Hero = (props: Props) => {
   const [activeIndx, setActiveIndx] = useState(0);
 
   return (
-    <section className=" h-[calc(100svh-10vh)] w-full pt-16  ">
+    <section className=" h-[calc(100svh-10vh)] w-full  ">
       <div className="bg-secondary absolute top-0 left-0 w-[70vw] z-0 h-[100vh]"></div>
       <div className="bg-secondary-foreground absolute top-0 right-0 w-[30vw] z-0 h-[100vh]"></div>
       <Wrapper className="flex h-full ">
-        <div className="w-2/5  z-10 flex flex-col justify-between  pb-2 ">
-          <div className="flex flex-col items-start justify-evenly grow  py-4">
+        {/* left */}
+        <div className="w-2/5  z-10 flex flex-col items-start  h-full ">
+          <div className="flex flex-col items-start justify-center flex-1   py-4 space-y-12">
             <h1 className="mt-8 text-3xl font-bold tracking-tight text-primary-foreground md:text-4xl lg:text-5xl">
               <span className="capitalize">
                 <span className="text-accent">Interio</span> The Modern
@@ -32,7 +33,7 @@ const Hero = (props: Props) => {
             <CustomButton text="Explore More" href="/gallery" />
           </div>
 
-          <div className="flex flex-row gap-x-2 items-end ">
+          <div className="flex flex-row gap-x-2 items-end justify-self-end pb-2 ">
             {SliderImages.map((item, index) => {
               return (
                 <Image
@@ -48,23 +49,27 @@ const Hero = (props: Props) => {
             })}
           </div>
         </div>
-
+        {/* right */}
         {SliderImages.map((item, index) => {
           if (index === activeIndx) {
             return (
-              <div key={item.id} className="relative flex-1">
-                <Image
-                  key={item.id}
-                  height={200}
-                  width={700}
-                  alt="NextUI hero Image with delay"
-                  className="rounded aspect-video z-[999]  relative"
-                  src={item.src}
-                />
-                <div
-                  className="absolute -top-[2rem] right-[4rem] z-[5] w-40  h-40 h-100vh "
-                  style={{ backgroundColor: `${item.bgColor}` }}
-                ></div>
+              <div
+                key={item.id}
+                className="relative w-3/5 h-full flex flex-col items-center justify-center"
+              >
+                <div className=" h-[70%] w-[90%] relative">
+                  <Image
+                    key={item.id}
+                    fill
+                    alt="NextUI hero Image with delay"
+                    className="rounded aspect-video z-[999]  object-cover relative "
+                    src={item.src}
+                  />
+                  <div
+                    className="absolute -top-[8%] -right-[5%] z-[5] w-[250px]  h-[200px]  "
+                    style={{ backgroundColor: `${item.bgColor}` }}
+                  ></div>
+                </div>
               </div>
             );
           }

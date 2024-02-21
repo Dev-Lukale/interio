@@ -7,7 +7,7 @@ export function Wrapper({
   children: React.ReactNode;
   className?: string;
 }) {
-  const wrapperClassName = cn("container", className);
+  const wrapperClassName = cn("w-[80vw] mx-auto",className);
 
   return <div className={wrapperClassName}>{children}</div>;
 }

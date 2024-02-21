@@ -33,7 +33,7 @@ export default function MynavigationBar() {
   const pathname = usePathname();
 
   return (
-    <header className=" font-[sans-serif] h-[10vh] sticky top-0  z-[999] w-full  flex  items-center ">
+    <header className=" font-[sans-serif] h-[10vh] sticky top-0  z-[999] w-full  flex  items-center text-primary  ">
       <Wrapper className="flex flex-row items-center h-full justify-between ">
         <Link className="font-bold capitalize" href="/">
           {/* <Logo /> */}Interio
