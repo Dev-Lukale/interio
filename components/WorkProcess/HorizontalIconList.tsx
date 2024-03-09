@@ -11,7 +11,7 @@ export type HorizontalIconListProps = {
 
 const HorizontalIconList = ({ items, className }: HorizontalIconListProps) => {
   const horizontalIconListClassName = cn(
-    "flex items-center justify-evenly !last:>div:text-accent last:border-accent",
+    "flex items-center justify-center w-full",
     className
   );
   return (
@@ -19,11 +19,11 @@ const HorizontalIconList = ({ items, className }: HorizontalIconListProps) => {
       {items.map((item: IconWithNameProps, index: number) => {
         return (
           <React.Fragment key={index}>
-            <IconWithName Icon={item.Icon} title={item.title} />
+            <IconWithName Icon={item.Icon} title={item.title} borderColor={item.borderColor} />
             {index !== items.length - 1 && (
               <Divider
                 orientation="horizontal"
-                className="w-16 h-1 last:>div:text-accent"
+                className="w-32 m-0 p-0"
               />
             )}
           </React.Fragment>
